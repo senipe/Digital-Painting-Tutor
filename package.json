@@ -1,0 +1,7 @@
+{
+  "name": "digital-painting-tutor",
+  "private": true,
+  "scripts": {
+    "update-images": "node scripts/generate-manifest.js"
+  }
+}

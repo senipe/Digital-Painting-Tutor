@@ -3,103 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Digital Painting Tutoring</title>
+    <title>About & Portfolio | Digital Painting Tutoring</title>
+    <meta name="description" content="Meet your instructor, a professional concept artist and illustrator holding a BA (Hons) in Concept and Comic Art. Browse my gallery of environment studies, character designs, and digital paintings.">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About & Portfolio | Digital Painting Tutoring">
+    <meta property="og:description" content="Meet your instructor, a professional concept artist and illustrator, and explore my digital painting gallery.">
+    <meta property="og:image" content="images/my-work/3.png">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <span class="lightbox-prev">&#10094;</span>
-        <span class="lightbox-next">&#10095;</span>
-        <div class="lightbox-content">
-            <img id="lightbox-image" src="" alt="Digital painting">
-        </div>
-    </div>
-    <nav class="navbar">
+    <!-- Header Navigation -->
+    <nav class="navbar" id="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">Digital Painting Tutoring</a>
-            <button class="hamburger" aria-label="Toggle menu">
+            <a href="index.html" class="logo" id="nav-logo">
+                Digital Painting Tutoring<span class="logo-dot"></span>
+            </a>
+            <button class="hamburger" id="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+                <li><a href="about.html" class="nav-link active" id="nav-link-about">About & Portfolio</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <section class="about-hero">
+        <!-- About Hero Section -->
+        <section class="about-hero" id="about-intro">
             <div class="container">
                 <div class="about-hero-content">
-                    <img src="Selfie Picture.png" alt="Digital Painting Tutor" class="about-hero-image">
-                    <h1 class="page-title">About Me</h1>
+                    <img src="Selfie Picture.png" alt="Digital Painting Tutor Portrait" class="about-hero-image">
+                    <h1 class="page-title">About & Portfolio</h1>
                 </div>
             </div>
         </section>
 
-        <section class="about-content">
+        <!-- About Content & Gallery -->
+        <section class="about-content" id="about-details">
             <div class="container">
-                <div class="about-section">
+                <div class="about-section" id="bio-block">
                     <h2>A Bit About Me</h2>
                     <p>I hold a BA (Hons) Concept and Comic Art degree and have professional experience as a concept artist in the gaming industry and as a freelancer. I'm proficient in industry-standard software including Photoshop, Clip-Studio Paint, and Procreate, as well as digital painting techniques, and I stay current with industry trends and portfolio requirements.</p>
-            </div>
-
-                <div class="about-section">
-                    <h2>Some of my work</h2>
-                    <div class="gallery-grid">
-                        <div class="gallery-item" data-index="0">
-                            <img src="My Work/1.webp" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="1">
-                            <img src="My Work/2.webp" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="2">
-                            <img src="My Work/3.png" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="3">
-                            <img src="My Work/4.png" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="4">
-                            <img src="My Work/5.webp" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="5">
-                            <img src="My Work/6.webp" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="6">
-                            <img src="My Work/7.webp" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="7">
-                            <img src="My Work/8.png" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="8">
-                            <img src="My Work/9.png" alt="Digital painting">
-                        </div>
-                        <div class="gallery-item" data-index="9">
-                            <img src="My Work/10.png" alt="Digital painting">
-                        </div>
-                    </div>
                 </div>
 
-                <div class="about-cta">
+                <div class="about-section" id="gallery-block">
+                    <h2>Portfolio Gallery</h2>
+                    <p>Explore a selection of my digital artwork, concept studies, and painting demonstrations. These represent the standards, rendering methods, and pipelines taught in my sessions.</p>
+                    
+                    <!-- Populated from images/my-work/ via images-loader.js -->
+                    <div class="gallery-grid" id="portfolio-gallery"></div>
+                </div>
+
+                <!-- Consultation Call-to-Action -->
+                <div class="about-cta" id="consultation-card">
                     <h2>Let's See If It's a Good Fit</h2>
-                    <p>The first lesson is free. It's a great way to see if I'm the right teacher for you. We can chat about your goals and what you want to learn.</p>
-                    <div class="pricing-info">£30 per lesson after the first free lesson</div>
-                    <a href="https://calendar.app.google/6hKx6KpQvLEstf3k8" class="cta-button" target="_blank" rel="noopener noreferrer">Book Your First Free Lesson</a>
+                    <p>The first lesson is free. It's a great way to see if I'm the right teacher for you. We can chat about your goals, look at your portfolio together, and plan what you want to learn.</p>
+                    <div class="pricing-info">First Lesson Free &bull; £30 per lesson thereafter</div>
+                    <a href="https://calendar.app.google/6hKx6KpQvLEstf3k8" class="cta-button" id="about-cta-btn" target="_blank" rel="noopener noreferrer">Book Your First Free Lesson</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-        </div>
-    </footer>
+    
+
+    <!-- Scripts -->
+    <script src="images-manifest.js"></script>
     <script src="gallery.js"></script>
+    <script src="images-loader.js"></script>
     <script src="nav.js"></script>
 </body>
 </html>
-
