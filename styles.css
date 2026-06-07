@@ -217,6 +217,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
     position: relative;
     height: 100vh;
+    height: 100dvh;
     min-height: 650px;
     width: 100%;
     display: flex;
@@ -1189,8 +1190,11 @@ section {
     }
 
     .hero {
-        align-items: center;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 650px;
         padding-top: 100px;
+        align-items: center;
     }
 
     .hero-title {
