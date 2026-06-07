@@ -415,16 +415,6 @@ body.about-page .navbar .nav-container {
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     color: #ffffff;
-    text-shadow:
-        -2px -2px 0 rgba(0,0,0,0.8),
-         2px -2px 0 rgba(0,0,0,0.8),
-        -2px  2px 0 rgba(0,0,0,0.8),
-         2px  2px 0 rgba(0,0,0,0.8),
-        -2px  0   0 rgba(0,0,0,0.8),
-         2px  0   0 rgba(0,0,0,0.8),
-         0   -2px 0 rgba(0,0,0,0.8),
-         0    2px 0 rgba(0,0,0,0.8),
-         0 4px 25px rgba(0,0,0,0.4);
 }
 
 .hero-subtitle {
