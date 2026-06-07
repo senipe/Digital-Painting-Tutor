@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking on a link
-        navLinks.forEach(link => {
+        // Close menu when clicking on a nav or social link
+        navMenu.querySelectorAll('.nav-link, .social-link').forEach(link => {
             link.addEventListener('click', function() {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
