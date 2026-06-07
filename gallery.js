@@ -23,7 +23,7 @@ function initPortfolioGallery(container, images) {
         const img = document.createElement('img');
         img.src = entry.src;
         img.alt = filenameToAltText(entry.src);
-        img.style.objectPosition = `${entry.x}% center`;
+        img.style.objectPosition = `${entry.x}% ${entry.y}%`;
         item.appendChild(img);
         container.appendChild(item);
     });
@@ -45,7 +45,7 @@ function initProjectsGrid(container, images) {
         img.src = entry.src;
         img.alt = filenameToAltText(entry.src);
         img.className = 'project-card-img';
-        img.style.objectPosition = `${entry.x}% center`;
+        img.style.objectPosition = `${entry.x}% ${entry.y}%`;
         card.appendChild(img);
 
         container.appendChild(card);

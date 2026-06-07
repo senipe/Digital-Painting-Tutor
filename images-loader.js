@@ -13,11 +13,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // Normalise each entry to { src, x } — supports plain strings and objects.
+    // Normalise each entry to { src, x, y } — supports plain strings and objects.
     // x is the horizontal anchor point (0 = left, 50 = centre, 100 = right).
+    // y is the vertical anchor point (0 = top, 50 = centre, 100 = bottom).
     function normalise(entry) {
-        if (typeof entry === 'string') return { src: entry, x: 50 };
-        return { src: entry.src, x: entry.x ?? 50 };
+        if (typeof entry === 'string') return { src: entry, x: 50, y: 50 };
+        return { src: entry.src, x: entry.x ?? 50, y: entry.y ?? 50 };
     }
 
     const heroImages   = (manifest.hero    || []).map(normalise);
