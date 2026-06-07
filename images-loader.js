@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     // y is the vertical anchor point (0 = top, 50 = centre, 100 = bottom).
     function normalise(entry) {
         if (typeof entry === 'string') return { src: entry, x: 50, y: 50 };
-        return { src: entry.src, x: entry.x ?? 50, y: entry.y ?? 50 };
+        return {
+            ...entry,
+            x: entry.x ?? 50,
+            y: entry.y ?? 50
+        };
     }
 
     const heroImages   = (manifest.hero    || []).map(normalise);
@@ -31,7 +35,15 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const projectsGrid = document.getElementById('projects-grid');
     if (projectsGrid && typeof initProjectsGrid === 'function') {
-        initProjectsGrid(projectsGrid, galleryImages);
+        const isMobile = window.innerWidth <= 768;
+        const filteredImages = galleryImages.filter(img => {
+            if (isMobile) {
+                return img.showOnMobileHome !== false;
+            } else {
+                return img.showOnPcHome !== false && img.showOnDesktopHome !== false;
+            }
+        });
+        initProjectsGrid(projectsGrid, filteredImages);
     }
 
     const portfolioGallery = document.getElementById('portfolio-gallery');

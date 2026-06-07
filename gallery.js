@@ -19,11 +19,14 @@ function initPortfolioGallery(container, images) {
         const item = document.createElement('div');
         item.className = 'gallery-item';
         item.dataset.index = String(index);
+        item.dataset.full = entry.src;
+        item.dataset.thumb = entry.thumb || entry.src;
 
         const img = document.createElement('img');
-        img.src = entry.src;
+        img.src = entry.thumb || entry.src;
         img.alt = filenameToAltText(entry.src);
         img.style.objectPosition = `${entry.x}% ${entry.y}%`;
+        img.loading = 'lazy';
         item.appendChild(img);
         container.appendChild(item);
     });
@@ -40,12 +43,15 @@ function initProjectsGrid(container, images) {
         const card = document.createElement('div');
         card.className = `project-card gallery-item${index % 3 === 0 ? ' wide' : ''}`;
         card.dataset.index = String(index);
+        card.dataset.full = entry.src;
+        card.dataset.thumb = entry.thumb || entry.src;
 
         const img = document.createElement('img');
-        img.src = entry.src;
+        img.src = entry.thumb || entry.src;
         img.alt = filenameToAltText(entry.src);
         img.className = 'project-card-img';
         img.style.objectPosition = `${entry.x}% ${entry.y}%`;
+        img.loading = 'lazy';
         card.appendChild(img);
 
         container.appendChild(card);
@@ -80,7 +86,42 @@ function setupLightbox(container) {
     const lightboxNext = lightbox.querySelector('.lightbox-next');
 
     let currentIndex = 0;
-    const imageSources = Array.from(galleryItems).map((item) => item.querySelector('img').src);
+    const itemsData = Array.from(galleryItems).map((item) => {
+        const img = item.querySelector('img');
+        return {
+            thumb: item.dataset.thumb || (img ? img.src : ''),
+            full: item.dataset.full || (img ? img.src : '')
+        };
+    });
+
+    let currentLoadingImage = null;
+
+    function loadImage(index) {
+        const item = itemsData[index];
+        if (!item) return;
+
+        // Instantly load the thumbnail
+        lightboxImage.src = item.thumb;
+
+        // Cancel previous background load if active
+        if (currentLoadingImage) {
+            currentLoadingImage.onload = null;
+            currentLoadingImage.onerror = null;
+            currentLoadingImage = null;
+        }
+
+        // Load the full-resolution image in the background
+        if (item.full && item.full !== item.thumb) {
+            const tempImg = new Image();
+            currentLoadingImage = tempImg;
+            tempImg.onload = () => {
+                if (currentLoadingImage === tempImg) {
+                    lightboxImage.src = item.full;
+                }
+            };
+            tempImg.src = item.full;
+        }
+    }
 
     if (lightboxController) {
         document.removeEventListener('keydown', lightboxController.onKeyDown);
@@ -94,7 +135,7 @@ function setupLightbox(container) {
     });
 
     function openLightbox() {
-        lightboxImage.src = imageSources[currentIndex];
+        loadImage(currentIndex);
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -102,16 +143,21 @@ function setupLightbox(container) {
     function closeLightbox() {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
+        if (currentLoadingImage) {
+            currentLoadingImage.onload = null;
+            currentLoadingImage.onerror = null;
+            currentLoadingImage = null;
+        }
     }
 
     function showNext() {
-        currentIndex = (currentIndex + 1) % imageSources.length;
-        lightboxImage.src = imageSources[currentIndex];
+        currentIndex = (currentIndex + 1) % itemsData.length;
+        loadImage(currentIndex);
     }
 
     function showPrev() {
-        currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
-        lightboxImage.src = imageSources[currentIndex];
+        currentIndex = (currentIndex - 1 + itemsData.length) % itemsData.length;
+        loadImage(currentIndex);
     }
 
     function onKeyDown(e) {

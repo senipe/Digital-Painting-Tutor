@@ -11,9 +11,18 @@ function initHeroSlideshow(slidesData) {
     slidesData.forEach((entry, index) => {
         const slide = document.createElement('div');
         slide.className = `slide${index === 0 ? ' active' : ''}`;
-        slide.style.backgroundImage = `url('${entry.src}')`;
+        slide.style.backgroundImage = `url('${entry.thumb || entry.src}')`;
         slide.style.backgroundPositionX = `${entry.x}%`;
         slideshowContainer.appendChild(slide);
+
+        // Progressively load full-resolution image in the background
+        if (entry.thumb && entry.thumb !== entry.src) {
+            const img = new Image();
+            img.onload = () => {
+                slide.style.backgroundImage = `url('${entry.src}')`;
+            };
+            img.src = entry.src;
+        }
     });
 
     const slides = slideshowContainer.querySelectorAll('.slide');
