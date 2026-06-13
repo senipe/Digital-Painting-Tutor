@@ -1484,3 +1484,110 @@ section {
         padding: 3.5rem 0 1.5rem;
     }
 }
+
+/* Booking Card Styles */
+.booking-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    padding: 3.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.booking-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+    font-family: 'Outfit', sans-serif;
+}
+
+.booking-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.booking-pricing-box {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.first-lesson-tag {
+    color: var(--text-white);
+}
+
+.no-commit {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    font-family: 'Lexend', sans-serif;
+}
+
+.old-price {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.includes-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: normal;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.contact-form-wrapper {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.secondary-booking {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .booking-card, .about-cta {
+        padding: 0.75rem;
+    }
+    
+    .contact-form-wrapper {
+        padding: 1rem;
+        border: none;
+        background: #ffffff;
+        border-radius: 8px;
+    }
+
+    .no-commit {
+        display: none;
+    }
+
+    .booking-title {
+        font-size: 2rem;
+    }
+
+    .booking-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .booking-pricing-box {
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+    }
+}
