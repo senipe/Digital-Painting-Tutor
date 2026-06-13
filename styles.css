@@ -1359,7 +1359,7 @@ section {
 
     .project-card.wide {
         grid-column: span 1;
-        height: 300px;
+        height: auto;
     }
 
     .services-grid {
@@ -1422,6 +1422,11 @@ section {
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .gallery-item {
+        height: auto !important;
+        aspect-ratio: 1.25 !important;
     }
 
     .about-content {
@@ -1549,10 +1554,9 @@ section {
 }
 
 .contact-form-wrapper {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+    background: transparent;
+    padding: 0;
+    border: none;
     text-align: left;
 }
 
@@ -1563,27 +1567,42 @@ section {
 
 @media (max-width: 768px) {
     .booking-card, .about-cta {
-        padding: 0.75rem;
+        padding: 2.5rem 0.75rem 1.5rem;
     }
     
     .contact-form-wrapper {
-        padding: 1rem;
+        padding: 0;
         border: none;
-        background: #ffffff;
-        border-radius: 8px;
+        background: transparent;
+        border-radius: 0;
     }
 
     .no-commit {
         display: none;
     }
 
+    .first-lesson-mobile-hide {
+        display: none;
+    }
+
     .booking-title {
-        font-size: 2rem;
+        font-size: 0 !important;
+        margin-bottom: 1rem;
+    }
+
+    .booking-title::after {
+        content: "First Lesson Free";
+        font-size: 2rem !important;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        color: var(--text-white);
+        display: block;
     }
 
     .booking-subtitle {
-        font-size: 1rem;
-        margin-bottom: 1rem;
+        display: none;
     }
 
     .booking-pricing-box {
